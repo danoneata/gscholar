@@ -172,13 +172,15 @@ if __name__ == "__main__":
     usage = 'Usage: %prog [options] {pdf | "search terms"}'
     parser = optparse.OptionParser(usage)
     parser.add_option("-a", "--all", action="store_true", dest="all", 
-            default="False", help="show all bibtex results")
+            default=False, help="show all bibtex results")
     parser.add_option("-d", "--debug", action="store_true", dest="debug",
-            default="False", help="show debugging output")
+            default=False, help="show debugging output")
     parser.add_option("-r", "--rename", action="store_true", dest="rename",
-            default="False", help="rename file (asks before doing it)")
-    parser.add_option("-f", "--outputformat", dest='output',
-            default="bibtex", help="Output format. Available formats are: bibtex, endnote, refman, wenxianwang [default: %default]")
+            default=False, help="rename file (asks before doing it)")
+    parser.add_option(
+        "-f", "--outputformat", dest='output', default="bibtex",
+        help="Output format. Available formats are: bibtex, endnote, refman, "
+        "wenxianwang [default: %default]")
     (options, args) = parser.parse_args()
     if options.debug == True:
         logging.basicConfig(level=logging.DEBUG)
@@ -218,4 +220,3 @@ if __name__ == "__main__":
             sys.exit(1)
         else:
             rename_file(args, biblist[0])
-
